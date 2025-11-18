@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GIS & Remote Sensing Portfolio – Muhammad Mazhar Hussain</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #080810;
+      --bg-soft: #10121b;
+      --accent: #8f7bff;
+      --accent-soft: rgba(143, 123, 255, 0.12);
+      --accent-strong: #e7ddff;
+      --text-main: #f7f7ff;
+      --text-muted: #a4a7c0;
+      --card-border: rgba(255, 255, 255, 0.06);
+      --chip-bg: rgba(255, 255, 255, 0.06);
+      --chip-text: #e0e3ff;
+      --max-width: 1100px;
+      --radius-lg: 18px;
+      --radius-sm: 999px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top left, #1c1b3a, #05060a 55%);
+      color: var(--text-main);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 28px 18px 48px;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 32px;
+      padding: 20px 20px 22px;
+      border-radius: 24px;
+      background: linear-gradient(
+          135deg,
+          rgba(143, 123, 255, 0.12),
+          transparent 50%
+        ),
+        rgba(3, 5, 15, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: var(--shadow-soft);
+    }
+
+    @media (min-width: 768px) {
+      header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .intro-main {
+      max-width: 650px;
+    }
+
+    .eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-strong);
+      opacity: 0.9;
+      margin-bottom: 4px;
+    }
+
+    h1 {
+      font-size: clamp(1.9rem, 3vw, 2.4rem);
+      font-weight: 650;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 36rem;
+    }
+
+    .header-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .chip {
+      font-size: 0.78rem;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      background: var(--chip-bg);
+      color: var(--chip-text);
+      border: 1px solid rgba(255,255,255,0.08);
+      white-space: nowrap;
+    }
+
+    .header-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    @media (min-width: 768px) {
+      .header-cta {
+        align-items: flex-end;
+        text-align: right;
+        margin-top: 0;
+      }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.84rem;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      cursor: pointer;
+      background: radial-gradient(circle at top left, var(--accent), #5a4fd4);
+      color: #050510;
+      font-weight: 600;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.65);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--accent-strong);
+      border-color: rgba(255, 255, 255, 0.12);
+      box-shadow: none;
+    }
+
+    .btn span.icon {
+      font-size: 1rem;
+    }
+
+    main {
+      margin-top: 22px;
+      display: grid;
+      gap: 26px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .section-heading h2 {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-strong);
+    }
+
+    .section-heading p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .projects-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    @media (min-width: 800px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .category-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin: 24px 0 8px;
+    }
+
+    .project-card {
+      border-radius: var(--radius-lg);
+      padding: 16px 16px 14px;
+      background: radial-gradient(circle at top left, #1b1635, #090a12);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(143, 123, 255, 0.16), transparent 60%);
+      opacity: 0.9;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .project-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .project-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .project-description {
+      font-size: 0.86rem;
+      color: #e2e4ff;
+      margin-bottom: 6px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 4px;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      padding: 3px 9px;
+      border-radius: var(--radius-sm);
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      border: 1px solid rgba(143, 123, 255, 0.42);
+      white-space: nowrap;
+    }
+
+    footer {
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: var(--accent-strong);
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="intro-main">
+        <div class="eyebrow">Portfolio</div>
+        <h1>GIS & Remote Sensing Projects – Muhammad Mazhar Hussain</h1>
+        <p class="subtitle">
+          A collection of academic and applied projects in LiDAR, remote sensing,
+          photogrammetry, network analysis, and environmental GIS.
+        </p>
+        <div class="header-tags">
+          <span class="chip">ArcGIS Pro / QGIS</span>
+          <span class="chip">LiDAR & Point Clouds</span>
+          <span class="chip">Remote Sensing</span>
+          <span class="chip">Spatial Analysis</span>
+          <span class="chip">Python & Automation</span>
+        </div>
+      </div>
+      <div class="header-cta">
+        <button class="btn">
+          <span class="icon">📄</span>
+          <span>Download project summaries (TXT)</span>
+        </button>
+        <button class="btn btn-secondary">
+          <span class="icon">✉️</span>
+          <span>Contact for full reports & maps</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <div class="section-heading">
+          <h2>Projects</h2>
+          <p>Selected academic projects showcasing analysis, tools, and outcomes.</p>
+        </div>
+
+        <!-- Remote Sensing & LiDAR -->
+        <div class="category-label">Remote Sensing & LiDAR</div>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-inner">
+              <h3 class="project-title">
+                Terrestrial Laser Scanning & Biomass Estimation (LiDAR)
+              </h3>
+              <p class="project-meta">EAS 451 – Digital / Advanced Digital Remote Sensing</p>
+              <p class="project-description">
+                Used a Riegl VZ-400i terrestrial LiDAR scanner and CloudCompare to
+                register point clouds, remove noise, and build quantitative structure models (QSMs).
+                Applied Python-based volume calculations to estimate tree biomass and explore
+                relationships between DBH and total biomass.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Terrestrial LiDAR</span>
+                <span class="tag">CloudCompare</span>
+                <span class="tag">Python</span>
+                <span class="tag">Biomass Estimation</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-inner">
+              <h3 class="project-title">
+                Tropical Dry Forest LiDAR Analysis – Santa Rosa, Costa Rica
+              </h3>
+              <p class="project-meta">EAS 451 – Remote Sensing Final Project</p>
+              <p class="project-description">
+                Processed airborne LiDAR data to generate DTM, DSM, and canopy height models,
+                then performed canopy segmentation in QGIS to delineate individual tree crowns.
+                Identified ~14,020 trees with an average height of 12.8 m and a maximum height of
+                ~38 m, characterizing forest structure across the study area.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Airborne LiDAR</span>
+                <span class="tag">Canopy Segmentation</span>
+                <span class="tag">QGIS / SAGA</span>
+                <span class="tag">Forest Structure</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-inner">
+              <h3 class="project-title">
+                Field Spectroscopy & Vegetation Health Assessment
+              </h3>
+              <p class="project-meta">EAS 451 – Lab 1</p>
+              <p class="project-description">
+                Collected field spectra using UniSpec and Neospectra spectrometers to analyze
+                leaf health at different phenological stages. Computed NDVI, SRPI, and Vogelmann
+                indices, examined red-edge shifts and absorption features, and related spectral
+                characteristics to chlorophyll content and hydration.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Field Spectroscopy</span>
+                <span class="tag">NDVI & Indices</span>
+                <span class="tag">Spectral Analysis</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-inner">
+              <h3 class="project-title">
+                Multispectral Image Classification – Calgary, Alberta
+              </h3>
+              <p class="project-meta">EAS 451 – Lab 2</p>
+              <p class="project-description">
+                Performed supervised (Maximum Likelihood) and unsupervised (K-means)
+                classification of Landsat 8 imagery in ERDAS Imagine to map agriculture,
+                urban, water, vegetation, and bare/dry land. Evaluated results using confusion
+                matrices, user’s/producer’s accuracy, and kappa statistics.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Landsat 8</span>
+                <span class="tag">Supervised & Unsupervised</span>
+                <span class="tag">ERDAS Imagine</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Photogrammetry & 3D -->
+        <div class="category-label">Photogrammetry & 3D Mapping</div>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-inner">
+              <h3 class="project-title">
+                Drone Photogrammetry – Hawrelak Park, Edmonton
+              </h3>
+              <p class="project-meta">EAS 451 – Lab 4</p>
+              <p class="project-description">
+                Processed 141 UAV images from a DJI Matrice 300 in Correlator3D to generate
+                a high-resolution DTM, DSM, and orthomosaic over Hawrelak Park. Created a
+                normalized height raster to estimate tree heights (~25 m) and building heights (~5 m),
+                supported by tie-point quality metrics.
+              </p>
+              <div class="project-tags">
+                <span class="tag">UAV / Drone</span>
+                <span class="tag">Correlator3D</span>
+                <span class="tag">Orthomosaic</span>
+                <span class="tag">DSM / DTM</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-inner">
+              <h3 class="project-title">
+                LiDAR Terrain Modeling & Contour Generation – Augusta, Maine
+              </h3>
+              <p class="project-meta">EAS 351 – Lab 5</p>
+              <p class="project-description">
+                Used QGIS and WhiteboxTools to convert LiDAR point clouds into TIN-based
+                DEMs, create hillshade visualizations, and generate 1 m and 5 m contour lines
+                for Augusta, Maine. Produced 3D views and elevation profiles highlighting the
+                Kennebec River and Maine State House.
+              </p>
+              <div class="project-tags">
+                <span class="tag">LiDAR</span>
+                <span class="tag">WhiteboxTools</span>
+                <span class="tag">Contours</span>
+                <span class="tag">Terrain Analysis</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Environmental GIS & Suitability -->
+        <div class="category-label">Environmental GIS & Suitability Analysis</div>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-inner">
+              <h3 class="project-title">
+                Kenow Wildfire Burn Severity Analysis – Waterton Lakes National Park
+              </h3>
+              <p class="project-meta">EAS 351 – Final Project</p>
+              <p class="project-description">
+                Processed pre- and post-fire Landsat 8 imagery to compute NBR and dNBR,
+                classify burn severity, and assess vegetation recovery one and five years after
+                the 2017 Kenow wildfire. Quantified burn area and reported ~91% vegetation
+                recovery over five years.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Wildfire Analysis</span>
+                <span class="tag">NBR / dNBR</span>
+                <span class="tag">QGIS</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-inner">
+              <h3 class="project-title">
+                Landfill Site Suitability – Antigua
+              </h3>
+              <p class="project-meta">HGEO 470 – Assignment 3</p>
+              <p class="project-description">
+                Built a multi-criteria suitability model in QGIS using buffers around hydrology,
+                mangroves, settlements, and roads, plus slope and land capability data.
+                Identified three candidate sites and recommended a ~177 ha location based on
+                environmental constraints and access.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Suitability Analysis</span>
+                <span class="tag">QGIS</span>
+                <span class="tag">Landfill Siting</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-inner">
+              <h3 class="project-title">
+                Solar Farm Suitability – Jefferson County, Tennessee
+              </h3>
+              <p class="project-meta">EAS 351 – Lab 6</p>
+              <p class="project-description">
+                Performed MCDA in Global Mapper using slope (0–5°), south-facing aspect
+                (150–210°), and 150 m transmission-line buffers. Identified 565.9 acres of
+                highly suitable solar land, with potential annual generation of ~223,000–
+                253,000 MWh and significant CO₂ emissions reductions.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Renewable Energy</span>
+                <span class="tag">MCDA</span>
+                <span class="tag">Global Mapper</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-inner">
+              <h3 class="project-title">
+                Vector Features from Raster – Sugarloaf Mountain, Maine
+              </h3>
+              <p class="project-meta">EAS 351 – Lab 3</p>
+              <p class="project-description">
+                Converted DEM raster for Sugarloaf Mountain into vector polygons representing
+                specific elevation ranges and slope thresholds. Generated maps of steep (>18°)
+                and gentle (<8°) slopes to support ski route planning and resort land-use
+                decisions.
+              </p>
+              <div class="project-tags">
+                <span class="tag">DEM to Vector</span>
+                <span class="tag">Slope & Elevation</span>
+                <span class="tag">Global Mapper</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-inner">
+              <h3 class="project-title">
+                Mississippi River Watershed Delineation
+              </h3>
+              <p class="project-meta">EAS 351 – Lab 4</p>
+              <p class="project-description">
+                Used Global Mapper’s watershed tools to delineate the Mississippi River
+                catchment and identify 1,609 intersecting counties across 32 states. Calculated
+                watershed area and discussed implications for flooding, land use, and climate
+                impacts across the basin.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Watershed Modeling</span>
+                <span class="tag">Hydrology</span>
+                <span class="tag">Global Mapper</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Accessibility, Networks & Demography -->
+        <div class="category-label">Accessibility, Networks & Demographic Analysis</div>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-inner">
+              <h3 class="project-title">
+                Healthcare Accessibility – 15-Minute Walksheds in Edmonton
+              </h3>
+              <p class="project-meta">HGEO 470 – Assignment 4</p>
+              <p class="project-description">
+                Used OpenRouteService (ORS) in QGIS to generate an origin–destination
+                matrix between dissemination areas and healthcare facilities. Identified facilities
+                accessible within a 15-minute walk, normalized accessibility scores, and mapped
+                walkable healthcare access across the study area.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Network Analysis</span>
+                <span class="tag">OpenRouteService</span>
+                <span class="tag">Accessibility</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-inner">
+              <h3 class="project-title">
+                Transit Accessibility & Social Vulnerability – Edmonton
+              </h3>
+              <p class="project-meta">HGEO 470 – Final Project</p>
+              <p class="project-description">
+                Combined Canadian Index of Multiple Deprivation (CIMD) scores with
+                walking-distance isochrones to hospitals to assess equity in healthcare access.
+                Found that about 65% of socially vulnerable DAs had poor access to hospitals,
+                and proposed improvements in walkability and service allocation.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Equity GIS</span>
+                <span class="tag">CIMD</span>
+                <span class="tag">Health Accessibility</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-inner">
+              <h3 class="project-title">
+                Thematic Mapping & 3D Population Density – Maine & New Hampshire
+              </h3>
+              <p class="project-meta">EAS 351 – Lab 2</p>
+              <p class="project-description">
+                Joined census population data to town polygons in Global Mapper and computed
+                population per square mile. Created thematic and 3D extruded maps showing
+                coastal and metropolitan population clusters in both states.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Thematic Mapping</span>
+                <span class="tag">3D Visualization</span>
+                <span class="tag">Census Data</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Foundations & Surveying -->
+        <div class="category-label">Foundations & Surveying</div>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-inner">
+              <h3 class="project-title">
+                Introduction to GIS Principles – Global Mapper Workflows
+              </h3>
+              <p class="project-meta">Training Lab – Principles of GIS</p>
+              <p class="project-description">
+                Completed a series of foundational GIS exercises including data import,
+                digitization, attribute management, layer styling, raster cropping, basic spatial
+                analysis, 3D display, and export/tiling workflows in Global Mapper.
+              </p>
+              <div class="project-tags">
+                <span class="tag">GIS Fundamentals</span>
+                <span class="tag">Digitizing</span>
+                <span class="tag">Data Management</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-inner">
+              <h3 class="project-title">
+                GPS Survey Techniques & Accuracy Assessment
+              </h3>
+              <p class="project-meta">EAS 327 – GPS Survey Techniques</p>
+              <p class="project-description">
+                Conducted a campus survey using a Garmin handheld GPS and a Trimble R7
+                differential GPS to map features and estimate a polygon for snow-load analysis.
+                Applied CSRS-PPP corrections and compared positional accuracy between
+                survey-grade and consumer-grade receivers.
+              </p>
+              <div class="project-tags">
+                <span class="tag">GPS / GNSS</span>
+                <span class="tag">Differential Correction</span>
+                <span class="tag">Surveying</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© <span id="year"></span> Muhammad Mazhar Hussain · GIS & Remote Sensing Portfolio</p>
+      <div class="footer-links">
+        <a href="#">View resume</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Email</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
